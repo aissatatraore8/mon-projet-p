@@ -233,35 +233,36 @@ body{
 /* ---------- content ---------- */
 .content{flex:1;min-width:0;display:flex;flex-direction:column}
 
+/* frosted glass strip: the photo shows through, blurred, up to the very top */
 .topbar{
   display:flex;align-items:center;gap:14px;
   padding:12px 24px;
-  background:rgba(255,255,255,.9);
-  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--line);
+  background:rgba(14,10,8,.26);
+  -webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);
+  border-bottom:1px solid rgba(255,255,255,.14);
 }
 .search{
   position:relative;flex:1;max-width:400px;
 }
 .search svg{
   position:absolute;left:13px;top:50%;translate:0 -50%;
-  width:15px;height:15px;opacity:.5;
+  width:15px;height:15px;opacity:.75;color:#fff;
   fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;
 }
 .search input{
   width:100%;height:36px;
   padding:0 14px 0 37px;
-  font:inherit;font-size:12px;color:var(--ink);
-  background:var(--surface-2);
-  border:1px solid var(--line);
+  font:inherit;font-size:12px;color:#fff;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.22);
   border-radius:10px;
   transition:border-color .18s ease, background .18s ease;
 }
-.search input::placeholder{color:var(--muted)}
+.search input::placeholder{color:rgba(255,255,255,.72)}
 .search input:focus{
-  outline:none;background:#fff;
-  border-color:var(--maroon);
-  box-shadow:0 0 0 3px rgba(107,27,4,.1);
+  outline:none;background:rgba(255,255,255,.2);
+  border-color:rgba(255,255,255,.55);
+  box-shadow:0 0 0 3px rgba(255,255,255,.12);
 }
 .topbar-right{margin-left:auto;display:flex;align-items:center;gap:14px}
 .user{display:flex;align-items:center;gap:9px}
@@ -270,9 +271,10 @@ body{
   display:grid;place-items:center;
   font-size:10.5px;font-weight:700;letter-spacing:.05em;color:#fff;
   background:linear-gradient(145deg,var(--maroon-soft),var(--maroon-deep));
+  box-shadow:0 0 0 1px rgba(255,255,255,.3);
 }
-.user b{display:block;font-size:11px;font-weight:600}
-.user small{display:block;font-size:9.5px;color:var(--muted)}
+.user b{display:block;font-size:11px;font-weight:600;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.user small{display:block;font-size:9.5px;color:rgba(255,255,255,.78);text-shadow:0 1px 6px rgba(0,0,0,.4)}
 
 /* ---------- hero ---------- */
 .hero{
