@@ -1,75 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
-    <title>Annuaire SEC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Annuaire SEC Diarra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Annuaire SEC</h1>
+        <span class="brand-plate">
+            <img src="../portail/icons/sec-wordmark.png" alt="SEC Diarra — Société d'Expertise Comptable">
+        </span>
+        <h1>Annuaire<small>Collaborateurs</small></h1>
+        <a class="back" href="../index.php">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+            Portail
+        </a>
     </header>
 
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Rechercher par nom, pseudo, email, téléphone ou fonction...">
-        <button id="clearSearch">Effacer</button>
+        <div class="field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/></svg>
+            <input type="search" id="searchInput" autocomplete="off"
+                   placeholder="Rechercher par nom, pseudo, email, téléphone ou fonction…"
+                   aria-label="Rechercher un collaborateur">
+        </div>
+        <button type="button" id="clearSearch">Effacer</button>
+        <p class="count" id="count"></p>
     </div>
 
   <div class="table-container">
-  <div class="table-horizontal-container">
-    <table class="unfixed-table">
-      <thead>
-        <tr>
-            <th>N° INTERPHONE</th>
-            <th>PSEUDO</th>
-            <th>PRENOM et NOM</th>
-            <th>E-MAIL</th>
-            <th>TELEPHONE</th>
-            <th>GRADE/FONCTION</th>
-            <th>ACTIONS</th>
-        </tr>
-      </thead>
-      <tbody id="tableBody">
-        <!-- Les données seront générées par JavaScript -->
-      </tbody>
-    </table>
+    <div class="table-horizontal-container">
+      <table>
+        <colgroup>
+          <col class="w-interphone"><col class="w-pseudo"><col class="w-nom">
+          <col class="w-email"><col class="w-tel"><col class="w-fonction"><col class="w-actions">
+        </colgroup>
+        <thead>
+          <tr>
+              <th>N° Interphone</th>
+              <th>Pseudo</th>
+              <th>Prénom et nom</th>
+              <th>E-mail</th>
+              <th>Téléphone</th>
+              <th>Grade / Fonction</th>
+              <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- Les données sont générées par JavaScript -->
+        </tbody>
+      </table>
+      <p class="empty" id="empty">Aucun collaborateur ne correspond à cette recherche.</p>
+    </div>
   </div>
-</div>
 
 <!-- Fenêtre modale d'édition -->
-<div id="editModal" class="modal">
+<div id="editModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="editTitle">
     <div class="modal-content">
-        <h2>Modifier les informations</h2>
+        <h2 id="editTitle">Modifier les informations</h2>
         <form id="editForm">
-            <input type="hidden" id="editIndex">
-            <div class="form-group">
-                <label for="editInterphone">N° INTERPHONE:</label>
-                <input type="text" id="editInterphone" required>
-            </div>
-            <div class="form-group">
-                <label for="editPseudo">PSEUDO:</label>
-                <input type="text" id="editPseudo" required>
-            </div>
-            <div class="form-group">
-                <label for="editNom">PRENOM et NOM:</label>
-                <input type="text" id="editNom" required>
-            </div>
-            <div class="form-group">
-                <label for="editEmail">E-MAIL:</label>
-                <input type="email" id="editEmail" required>
-            </div>
-            <div class="form-group">
-                <label for="editTelephone">TELEPHONE:</label>
-                <input type="text" id="editTelephone" required>
-            </div>
-            <div class="form-group">
-                <label for="editFonction">GRADE/FONCTION:</label>
-                <input type="text" id="editFonction" required>
+            <div class="modal-body">
+                <input type="hidden" id="editId">
+                <div class="form-group">
+                    <label for="editInterphone">N° Interphone</label>
+                    <input type="text" id="editInterphone" required>
+                </div>
+                <div class="form-group">
+                    <label for="editPseudo">Pseudo</label>
+                    <input type="text" id="editPseudo" required>
+                </div>
+                <div class="form-group">
+                    <label for="editNom">Prénom et nom</label>
+                    <input type="text" id="editNom" required>
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">E-mail</label>
+                    <input type="text" id="editEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="editTelephone">Téléphone</label>
+                    <input type="text" id="editTelephone" required>
+                </div>
+                <div class="form-group">
+                    <label for="editFonction">Grade / Fonction</label>
+                    <input type="text" id="editFonction" required>
+                </div>
             </div>
             <div class="form-buttons">
-                <button type="submit">Sauvegarder</button>
                 <button type="button" id="cancelEdit">Annuler</button>
+                <button type="submit">Sauvegarder</button>
             </div>
         </form>
     </div>
@@ -151,93 +174,138 @@
         { interphone: "-", pseudo: "-", nom: "Jean BERNARD SIDIBE", email: "Chauffeur", telephone: "76 03 19 59", fonction: "-" },
         { interphone: "-", pseudo: "-", nom: "Souleymane THIERO", email: "Chauffeur", telephone: "77 80 65 32", fonction: "-" },
         { interphone: "-", pseudo: "-", nom: "ELISEE", email: "Gardien", telephone: "77 85 54 15", fonction: "-" }
+    ].map((e, i) => Object.assign({ id: i + 1 }, e));
+
+    const COLUMNS = [
+        { key: 'interphone', label: 'N° Interphone', cls: 'col-interphone' },
+        { key: 'pseudo',     label: 'Pseudo',        cls: 'col-pseudo' },
+        { key: 'nom',        label: 'Prénom et nom', cls: 'col-nom' },
+        { key: 'email',      label: 'E-mail',        cls: 'col-email' },
+        { key: 'telephone',  label: 'Téléphone',     cls: 'col-tel' },
+        { key: 'fonction',   label: 'Grade / Fonction', cls: 'col-fonction' }
     ];
+
+    const tbody = document.getElementById('tableBody');
+    const empty = document.getElementById('empty');
+    const countEl = document.getElementById('count');
 
     // Afficher les données dans le tableau
     function renderTable(data) {
-        const tbody = document.getElementById('tableBody');
-        tbody.innerHTML = '';
+        tbody.textContent = '';
 
-        data.forEach((employee, index) => {
+        data.forEach(employee => {
             const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${employee.interphone}</td>
-                <td>${employee.pseudo}</td>
-                <td>${employee.nom}</td>
-                <td>${employee.email}</td>
-                <td>${employee.telephone}</td>
-                <td>${employee.fonction}</td>
-                <td><button class="edit-btn" onclick="openEditModal(${index})">Modifier</button></td>
-            `;
+
+            COLUMNS.forEach(col => {
+                const td = document.createElement('td');
+                td.className = col.cls;
+                td.dataset.label = col.label;
+                td.textContent = employee[col.key];
+                row.appendChild(td);
+            });
+
+            const actions = document.createElement('td');
+            actions.className = 'col-actions';
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'edit-btn';
+            // the row id, not its position: the list may be filtered
+            btn.dataset.id = employee.id;
+            btn.textContent = 'Modifier';
+            actions.appendChild(btn);
+            row.appendChild(actions);
+
             tbody.appendChild(row);
         });
+
+        empty.classList.toggle('is-visible', data.length === 0);
+        countEl.innerHTML = data.length === employees.length
+            ? '<b>' + employees.length + '</b> collaborateurs'
+            : '<b>' + data.length + '</b> sur ' + employees.length;
     }
 
     // Recherche
     const searchInput = document.getElementById('searchInput');
     const clearSearch = document.getElementById('clearSearch');
 
+    function norm(s) {
+        return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    }
+
     function filterTable() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const filtered = employees.filter(emp => {
-            return emp.interphone.toLowerCase().includes(searchTerm) ||
-                   emp.pseudo.toLowerCase().includes(searchTerm) ||
-                   emp.nom.toLowerCase().includes(searchTerm) ||
-                   emp.email.toLowerCase().includes(searchTerm) ||
-                   emp.telephone.toLowerCase().includes(searchTerm) ||
-                   emp.fonction.toLowerCase().includes(searchTerm);
-        });
-        renderTable(filtered);
+        const term = norm(searchInput.value.trim());
+        if (!term) { renderTable(employees); return; }
+        renderTable(employees.filter(emp =>
+            COLUMNS.some(col => norm(emp[col.key]).includes(term))
+        ));
     }
 
     searchInput.addEventListener('input', filterTable);
 
-    clearSearch.addEventListener('click', function() {
+    clearSearch.addEventListener('click', function () {
         searchInput.value = '';
-        renderTable(employees);
+        searchInput.focus();
+        filterTable();
     });
 
     // Modal d'édition
     const modal = document.getElementById('editModal');
     const editForm = document.getElementById('editForm');
     const cancelEdit = document.getElementById('cancelEdit');
+    let lastFocused = null;
 
-    function openEditModal(index) {
-        const employee = employees[index];
-        document.getElementById('editIndex').value = index;
+    tbody.addEventListener('click', function (e) {
+        const btn = e.target.closest('.edit-btn');
+        if (btn) openEditModal(Number(btn.dataset.id));
+    });
+
+    function openEditModal(id) {
+        const employee = employees.find(emp => emp.id === id);
+        if (!employee) return;
+
+        lastFocused = document.activeElement;
+        document.getElementById('editId').value = employee.id;
         document.getElementById('editInterphone').value = employee.interphone;
         document.getElementById('editPseudo').value = employee.pseudo;
         document.getElementById('editNom').value = employee.nom;
         document.getElementById('editEmail').value = employee.email;
         document.getElementById('editTelephone').value = employee.telephone;
         document.getElementById('editFonction').value = employee.fonction;
-        modal.style.display = 'block';
+        modal.classList.add('is-open');
+        document.getElementById('editInterphone').focus();
     }
 
-    cancelEdit.addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
+    function closeModal() {
+        modal.classList.remove('is-open');
+        if (lastFocused) lastFocused.focus();
+    }
 
-    editForm.addEventListener('submit', function(e) {
+    cancelEdit.addEventListener('click', closeModal);
+
+    editForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        const index = document.getElementById('editIndex').value;
-        employees[index] = {
-            interphone: document.getElementById('editInterphone').value,
-            pseudo: document.getElementById('editPseudo').value,
-            nom: document.getElementById('editNom').value,
-            email: document.getElementById('editEmail').value,
-            telephone: document.getElementById('editTelephone').value,
-            fonction: document.getElementById('editFonction').value
-        };
-        modal.style.display = 'none';
+        const id = Number(document.getElementById('editId').value);
+        const employee = employees.find(emp => emp.id === id);
+        if (!employee) return;
+
+        employee.interphone = document.getElementById('editInterphone').value;
+        employee.pseudo     = document.getElementById('editPseudo').value;
+        employee.nom        = document.getElementById('editNom').value;
+        employee.email      = document.getElementById('editEmail').value;
+        employee.telephone  = document.getElementById('editTelephone').value;
+        employee.fonction   = document.getElementById('editFonction').value;
+
+        closeModal();
         filterTable();
     });
 
-    // Fermer la modal si on clique en dehors
-    window.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
+    // Fermer la modale en cliquant en dehors, ou avec Échap
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
     });
 
     // Initialisation

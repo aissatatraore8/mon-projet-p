@@ -1,299 +1,456 @@
-﻿<?php 
-$url= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
-$host='http://';
-$hosts='https://';
-if($url=='sec/'||$url=='192.168.1.53/'){
-$host=$host.'sec';
-$hosts=$hosts.'sd:443/';
-}else{
-$host=$host.'apps.sitaninfo.com:';
-$hosts=$hosts.'apps.sitaninfo.com:443';
-
+<?php
+$url = $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+if ($url == 'sec/' || $url == '192.168.1.53/') {
+    $host  = 'http://sec';
+    $hosts = 'https://sd:443/';
+} else {
+    $host  = 'http://apps.sitaninfo.com';
+    $hosts = 'https://apps.sitaninfo.com:443';
 }
 
+$apps = [
+    [
+        'name'  => 'FLEX RH GTA',
+        'desc'  => 'Gestion du personnel',
+        'url'   => 'http://192.168.1.53:90/gtp',
+        'logo'  => 'portail/icons/flexrh.png',
+        'accent' => '#8E1B2E',
+    ],
+    [
+        'name'  => 'GTP',
+        'desc'  => 'Gestion du temps',
+        'url'   => $host . ':8081/Gtp/',
+        'logo'  => 'portail/icons/gtp.png',
+        'accent' => '#7B1E2B',
+    ],
+    [
+        'name'  => 'Cantine SEC',
+        'desc'  => 'Cantine et paiements',
+        'url'   => 'http://192.168.1.132:3000',
+        'logo'  => 'portail/icons/cantine.png',
+        'accent' => '#A8894E',
+    ],
+    [
+        'name'  => 'GLPI',
+        'desc'  => 'Supervision et support',
+        'url'   => 'http://backup/glpi/',
+        'logo'  => 'portail/icons/glpi.png',
+        'accent' => '#5BA81F',
+    ],
+    [
+        'name'  => 'SARALI',
+        'desc'  => 'Gestion de la paie',
+        'url'   => 'http://cloud.sitaninfo.com:8090/sarali/',
+        'logo'  => 'portail/icons/sarali.png',
+        'accent' => '#2A50A8',
+    ],
+    [
+        'name'  => 'E-MEETING',
+        'desc'  => 'Réunions en ligne',
+        'url'   => 'http://cloud.sitaninfo.com:9586/',
+        'logo'  => 'portail/icons/emeeting.png',
+        'accent' => '#D9453F',
+    ],
+    [
+        'name'  => 'ANNUAIRE SEC',
+        'desc'  => 'Annuaire des collaborateurs',
+        'url'   => 'annuaire/',
+        'glyph' => 'directory',
+        'accent' => '#2E8C8C',
+    ],
+    [
+        'name'  => 'SYSCOHADA to DGI',
+        'desc'  => 'Conversion comptable',
+        'url'   => 'https://syscohada-to-dgi.vercel.app',
+        'glyph' => 'convert',
+        'accent' => '#C08A3E',
+    ],
+];
+
+$glyphs = [
+    'directory' => '<path d="M7 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7V3Z"/>'
+                 . '<path d="M4 7h3M4 12h3M4 17h3"/>'
+                 . '<circle cx="13" cy="10" r="2.2"/>'
+                 . '<path d="M9.8 16c.5-1.6 1.7-2.5 3.2-2.5s2.7.9 3.2 2.5"/>',
+    'convert'   => '<path d="M4 8h12l-3-3M20 16H8l3 3"/>'
+                 . '<path d="M4 8v8M20 16V8"/>',
+];
 ?>
-
 <!DOCTYPE html>
-<!-- saved from url=(0037)https://login.infomaniak.com/fr/users -->
-<html style="" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="fr"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>
-		<style type="text/css">.uib-time input{width:50px;}</style>
-		<style type="text/css">
-			[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .
-			tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].
-			tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .
-			tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .
-			tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-left > .
-			tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-left > .
-			tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-top > .
-			tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-top > .
-			tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-left > .
-			tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-left > .
-			tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-top > .
-			tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-top > .
-			tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .
-			arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].
-			popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .
-			arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow,[uib-popover-html-popup].
-			popover.top-left > .arrow,[uib-popover-html-popup].popover.top-right > .arrow,[uib-popover-html-popup].popover.bottom-left > 
-			.arrow,[uib-popover-html-popup].popover.bottom-right > .arrow,[uib-popover-html-popup].popover.left-top > .arrow,[uib-popover-html-popup].
-			popover.left-bottom > .arrow,[uib-popover-html-popup].popover.right-top > .arrow,[uib-popover-html-popup].popover.right-bottom > .
-			arrow,[uib-popover-template-popup].popover.top-left > .arrow,[uib-popover-template-popup].popover.top-right > .
-			arrow,[uib-popover-template-popup].popover.bottom-left > .arrow,[uib-popover-template-popup].popover.bottom-right > .
-			arrow,[uib-popover-template-popup].popover.left-top > .arrow,[uib-popover-template-popup].popover.left-bottom > .
-			arrow,[uib-popover-template-popup].popover.right-top > .arrow,[uib-popover-template-popup].popover.right-bottom > .
-			arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-html-popup].
-			popover,[uib-popover-template-popup].popover{display:block !important;}
-		</style>
-		
-		<style type="text/css">.
-			uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}
-		</style>
-		
-		<style type="text/css">.
-			uib-position-measure{display:block !important;visibility:hidden 
-			!important;position:absolute !important;top:-9999px !important;left:-9999px 
-			!important;}.uib-position-scrollbar-measure{position:absolute !important;top:-9999px !important;width:50px 
-			!important;height:50px !important;overflow:scroll !important;}.uib-position-body-scrollbar-measure{overflow:scroll
-			!important;}
-		</style>
-		
-		<style type="text/css">.
-			uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.
-			uib-left,.uib-right{width:100%}
-		</style>
-		<style type="text/css">.ng-animate.item:not(.left):not(.right)
-			{-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}
-		</style>
-		<style type="text/css">
-			@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],
-			.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.
-			ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}
-		</style>
-    
-		<meta name="description" content="Infomaniak - Console d'administration">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta name="keywords" content="Infomaniak">
-		<meta name="referrer" content="origin">
-		<title>Portail SEC DIARRA</title>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portail applicatif SEC Diarra — Société d'Expertise Comptable">
+<title>Portail SEC DIARRA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#6B1B04;            /* the "Diarra" script in the logo */
+  --maroon-deep:#4E1403;
+  --maroon-soft:#8F3A1C;
+  --maroon-tint:rgba(107,27,4,.07);
+  --ink:#1C1A18;
+  --muted:#6E6A66;
+  --line:#E7E2DD;
+  --surface:#FFFFFF;
+  --surface-2:#F7F5F3;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--surface);
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
 
-       
-		<!--<base href="/">--><!-- base href="<?php echo $host?>/" -->
+/* ---------- background ---------- */
+.backdrop{position:fixed;inset:0;z-index:0;overflow:hidden;background:#17120F}
+/* full width; the small horizontal overscan hides the soft edge the blur
+   would otherwise leave against the frame */
+.backdrop img{
+  position:absolute;left:-10px;top:50%;translate:0 -50%;
+  width:calc(100% + 20px);height:auto;
+  filter:blur(2px);
+}
+/* dark veil, heaviest on the left so the text side stays readable */
+.backdrop::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,
+    rgba(10,7,5,.78) 0%,
+    rgba(10,7,5,.64) 28%,
+    rgba(10,7,5,.38) 58%,
+    rgba(10,7,5,.20) 100%);
+}
 
-		<!-- build:css build/dist/assets/css/main.css -->
-		<link rel="stylesheet" href="portail/main-d7fb8a9117.css" charset="UTF-8">
-		<!-- endbuild -->
+/* ---------- shell ---------- */
+.shell{position:relative;z-index:1;display:flex;height:100vh}
 
-		<!-- build:js build/dist/assets/js/vendor.js -->
-		<script type="text/javascript" src="portail/vendor.js" charset="UTF-8"></script>
-		<!-- endbuild -->
+/* ---------- sidebar ---------- */
+.sidebar{
+  width:286px;flex:0 0 286px;
+  display:flex;flex-direction:column;
+  background:rgba(255,255,255,.94);
+  -webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);
+  border-right:1px solid var(--line);
+}
+.brand{
+  padding:18px 18px 14px;
+  border-bottom:1px solid var(--line);
+}
+.brand-plate{display:block;width:100%;max-width:186px}
+.brand-plate img{display:block;width:100%;height:auto}
+.brand span{
+  display:block;margin-top:9px;
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--maroon);
+}
 
-		<!-- build:js build/dist/assets/js/polyfill.js -->
-		<script type="text/javascript" src="portail/polyfill.js" charset="UTF-8"></script>
-		<!-- endbuild -->
+.nav{
+  flex:1;min-height:0;overflow-y:auto;
+  padding:10px 10px 6px;
+  display:flex;flex-direction:column;gap:2px;
+  scrollbar-width:thin;scrollbar-color:rgba(107,27,4,.25) transparent;
+}
+.nav::-webkit-scrollbar{width:6px}
+.nav::-webkit-scrollbar-thumb{background:rgba(107,27,4,.22);border-radius:3px}
 
-		<script type="text/javascript" charset="utf-8" async="" src="portail/locale.js"></script></head>
+.app{
+  --accent:var(--maroon);
+  position:relative;
+  display:flex;align-items:center;gap:10px;
+  padding:6px 10px 6px 8px;
+  border-radius:11px;
+  text-decoration:none;color:inherit;
+  border:1px solid transparent;
+  transition:background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.app::before{
+  content:"";position:absolute;left:0;top:50%;translate:0 -50%;
+  width:3px;height:0;border-radius:0 3px 3px 0;
+  background:var(--accent);
+  transition:height .22s ease;
+}
+.app:hover,.app:focus-visible{
+  background:var(--maroon-tint);
+  border-color:rgba(107,27,4,.12);
+  outline:none;
+}
+.app:hover::before,.app:focus-visible::before{height:26px}
+.app:focus-visible{box-shadow:0 0 0 2px rgba(107,27,4,.4)}
+.app:hover .app-name{color:var(--maroon)}
 
-		<body class="">
+.plate{
+  flex:0 0 58px;width:58px;height:37px;
+  border-radius:9px;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  padding:4px 5px;
+  transition:border-color .2s ease, background .2s ease;
+}
+.app:hover .plate{background:#fff;border-color:rgba(107,27,4,.3)}
+.plate img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.plate svg{width:20px;height:20px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 
+.app-txt{min-width:0;flex:1}
+.app-name{
+  display:block;font-size:12px;font-weight:600;letter-spacing:.012em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.app-desc{
+  display:block;margin-top:1px;font-size:10px;color:var(--muted);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.chev{
+  flex:0 0 auto;width:14px;height:14px;opacity:.35;color:var(--muted);
+  fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  transition:opacity .18s ease, translate .18s ease, color .18s ease;
+}
+.app:hover .chev{opacity:1;translate:3px 0;color:var(--maroon)}
 
+.no-result{
+  display:none;padding:22px 14px;text-align:center;
+  font-size:12.5px;color:var(--muted);
+}
 
+.side-foot{
+  padding:12px 18px 15px;border-top:1px solid var(--line);
+  display:flex;align-items:center;gap:9px;
+  font-size:10px;line-height:1.45;color:var(--muted);
+}
+.side-foot svg{
+  flex:0 0 auto;width:15px;height:15px;
+  fill:none;stroke:var(--maroon);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+}
 
-		<div id="wrapper" class="main-wrapper template-large">
+/* ---------- content ---------- */
+.content{flex:1;min-width:0;display:flex;flex-direction:column}
 
-    
+.topbar{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 24px;
+  background:rgba(255,255,255,.9);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.search{
+  position:relative;flex:1;max-width:400px;
+}
+.search svg{
+  position:absolute;left:13px;top:50%;translate:0 -50%;
+  width:15px;height:15px;opacity:.5;
+  fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;
+}
+.search input{
+  width:100%;height:36px;
+  padding:0 14px 0 37px;
+  font:inherit;font-size:12px;color:var(--ink);
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  border-radius:10px;
+  transition:border-color .18s ease, background .18s ease;
+}
+.search input::placeholder{color:var(--muted)}
+.search input:focus{
+  outline:none;background:#fff;
+  border-color:var(--maroon);
+  box-shadow:0 0 0 3px rgba(107,27,4,.1);
+}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.user{display:flex;align-items:center;gap:9px}
+.avatar{
+  width:31px;height:31px;border-radius:50%;
+  display:grid;place-items:center;
+  font-size:10.5px;font-weight:700;letter-spacing:.05em;color:#fff;
+  background:linear-gradient(145deg,var(--maroon-soft),var(--maroon-deep));
+}
+.user b{display:block;font-size:11px;font-weight:600}
+.user small{display:block;font-size:9.5px;color:var(--muted)}
 
-    <div id="main">
-        <div class="main-wrapper">
-            <aside class="aside">
-                <!-- uiView: --><div ui-view="" class="main-content ng-scope" style=""><header-component class="ng-scope ng-isolate-scope"><header class="header">
-<div class="row">
-<div class="col-xs-6">
-<div class="header__logo margin-bottom-15">
-<img src="portail/logo_sec1.png" alt="logo">
-</div>
-<span class="header__subtitle">
-<!-- ngIf: $ctrl.type === 'login' -->
-<!-- ngIf: $ctrl.type !== 'login' --><span ng-if="$ctrl.type !== 'login'" class="ng-scope"> </span><!-- end ngIf: $ctrl.type !== 'login' -->
-</span>
-</div>
-<div class="col-xs-6">
-<div class="dropdown--inline right">
-<div class="clearfix dropdown" uib-dropdown="">
+/* ---------- hero ---------- */
+.hero{
+  flex:1;min-height:0;
+  display:flex;flex-direction:column;justify-content:center;
+  align-items:flex-start;
+  padding:0 24px 6vh 36px;
+}
+.hero-inner{max-width:560px}
+.script{
+  font-family:'Playfair Display',Georgia,serif;
+  font-style:italic;font-weight:500;
+  font-size:clamp(16px,1.7vw,21px);
+  color:#E4BCA4;
+  margin:0 0 5px;
+}
+.rule{width:48px;height:2px;background:#B4552F;margin:0 0 16px;border:0}
+.hero h1{
+  margin:0;
+  font-size:clamp(23px,2.9vw,36px);
+  line-height:1.14;
+  font-weight:700;
+  letter-spacing:-.018em;
+  color:#FFFFFF;
+}
+.author{margin:12px 0 0;font-size:12px;color:rgba(255,255,255,.72)}
 
-</div>
-</div>
-</div>
-</div>
-</header>
-</header-component>
-<section class="section section--center ng-scope">
-<div class="full-width">
-<!-- ngRepeat: user in config.list --><div class="ng-scope">
+.pills{display:flex;flex-wrap:wrap;gap:20px;margin-top:76px}
+.pill{display:flex;align-items:center;gap:10px}
+.pill-ico{
+  width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;flex:0 0 auto;
+  background:rgba(255,255,255,.93);
+}
+.pill-ico svg{
+  width:16px;height:16px;fill:none;stroke:var(--maroon);stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.pill p{margin:0;font-size:11px;line-height:1.4;color:rgba(255,255,255,.9)}
 
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  body{overflow:auto}
+  .shell{flex-direction:column;height:auto;min-height:100vh}
+  .sidebar{width:100%;flex:none;border-right:0;border-bottom:1px solid var(--line)}
+  /* a 16:9 photo at full width would be a thin strip on a portrait screen */
+  .backdrop img{height:100%;object-fit:cover}
+  .nav{overflow:visible;display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:4px}
+  .hero{padding:28px 20px 36px;max-width:none}
+  .topbar{padding:12px 20px;flex-wrap:wrap}
+  .search{max-width:none;order:2;flex-basis:100%}
+  .topbar-right{margin-left:auto}
+  .pills{gap:18px;margin-top:28px}
+}
+@media (max-width:520px){
+  .user-meta{display:none}
+  .pill{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
 
-<div class="block-user">
-<div class="block-user__avatar link">
-<div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/favicon.ico" alt="Gestion des temps passés et activités" src="portail/favicon.ico"><!-- end ngIf: !user.avatar -->
-<!-- ngIf: user.avatar -->
-</div>
-</div>
-<a href="http://192.168.1.53:90/gtp" target="_blank">
-<div class="block-user__display link">
-<span class="block-user__name ng-binding">FLEX RH GTA</span>
-<span class="block-user__login ng-binding">Solution flexible et évolutive de gestion du temps et activités</span>
-</div>
-</a>
+<div class="backdrop"><img src="portail/bg-sec.jpg" alt=""></div>
 
-</div>
+<div class="shell">
 
-<div class="block-user">
-<div class="block-user__avatar link">
-<div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/logo_gtp.jpg" alt="Gestion des temps passés" src="portail/logo_gtp.jpg"><!-- end ngIf: !user.avatar -->
-<!-- ngIf: user.avatar -->
-</div>
-</div>
-<a href="<?php echo $host?>:8081/Gtp/" target="_blank">
-<div class="block-user__display link">
-<span class="block-user__name ng-binding">GTP</span>
-<span class="block-user__login ng-binding">Solution flexible de et évolutive de gestion du temps</span>
-</div>
-</a>
-
-</div>
-
-<div class="block-user">
-<div class="block-user__avatar link">
-<div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/logo_cantine.png" alt="Gestion de la cantine" src="portail/logo_cantine.png"><!-- end ngIf: !user.avatar -->
-<!-- ngIf: user.avatar -->
-</div>
-</div>
-<a href="http://192.168.1.132:3000" target="_blank">
-<div class="block-user__display link">
-<span class="block-user__name ng-binding">Cantine SEC</span>
-<span class="block-user__login ng-binding">Solution simple de gestion de la cantine et suivi des paiements</span>
-</div>
-</a>
-
-</div>
-
-<div class="block-user">
-<div class="block-user__avatar link">
-<div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/logo_glpi.png" alt="G L P I" src="portail/logo_glpi.png"><!-- end ngIf: !user.avatar -->
-<!-- ngIf: user.avatar -->
-</div>
-</div>
-<a href="http://backup/glpi/" target="_blank">
-<div class="block-user__display link">
-<span class="block-user__name ng-binding">GLPI</span>
-<span class="block-user__login ng-binding">Solution simple pour la supervision</span>
-</div>
-</a>
-
-</div>
-<div class="block-user">
-<div class="block-user__avatar link">
-<div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/logo_gtp.jpg" alt="sarali" src="portail/logo_sarali.png"><!-- end ngIf: !user.avatar -->
-<!-- ngIf: user.avatar -->
-</div>
-</div>
-<a href="http://cloud.sitaninfo.com:8090/sarali/" target="_blank">
-<div class="block-user__display link">
-<span class="block-user__name ng-binding">SARALI</span>
-<span class="block-user__login ng-binding">Solution simple de gestion de la paye</span>
-</div>
-</a>
-
-</div>
-
-</div><!-- end ngRepeat: user in config.list -->
-<div class="block-user">
-<div class="block-user__avatar link">
-<div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/logo_emeeting.png" alt="G L P I" src="portail/logo_emeeting.png"><!-- end ngIf: !user.avatar -->
-<!-- ngIf: user.avatar -->
-</div>
-</div>
-<a href="http://cloud.sitaninfo.com:9586/" target="_blank">
-<div class="block-user__display link">
-<span class="block-user__name ng-binding">E-MEETING</span>
-<span class="block-user__login ng-binding">Solution simple pour les reunions</span>
-</div>
-</a>
-
-</div>
-
-
-<div class="block-user">
-<div class="block-user__avatar link">
-<div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/logo_emeeting.png" alt="AN" src=""><!-- end ngIf: !user.avatar -->
-<!-- ngIf: user.avatar -->
-</div>
-</div>
-<a href="http://localhost/sec-diarra/annuaire/" target="_blank">
-<div class="block-user__display link">
-<span class="block-user__name ng-binding">ANNUAIRE SEC</span>
-<span class="block-user__login ng-binding">Annuaire des collaborateurs</span>
-</div>
-</a>
-
-</div>
-
-</div>
-
-<div class="block-user">
-<div class="block-user__avatar link">
-<div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="https://play-lh.googleusercontent.com/6BO2T7sr8gcgrNnboY4fjbLJney-nkP4GXbeFzPrs8qTCeZIYHjD3htkg_hk3QVbuA" alt="SYSCOHADA to DGI" src="https://play-lh.googleusercontent.com/6BO2T7sr8gcgrNnboY4fjbLJney-nkP4GXbeFzPrs8qTCeZIYHjD3htkg_hk3QVbuA"><!-- end ngIf: !user.avatar -->
-<!-- ngIf: user.avatar -->
-</div>
-</div>
-<a href="https://syscohada-to-dgi.vercel.app" target="_blank">
-<div class="block-user__display link">
-<span class="block-user__name ng-binding">SYSCOHADA to DGI</span>
-<span class="block-user__login ng-binding">Outil de conversion SYSCOHADA vers DGI</span>
-</div>
-</a>
-
-</div>
-
-</section>
-<div>
-	<footer-component class="ng-scope ng-isolate-scope">
-		<footer class="footer tablet-desktop-only">
-
-		</footer>
-	</footer-component></div>
-</div></aside>
-            <main class="main-view" style="background-image:url(./portail/img.jpg)">
-                <div class="col-sm-10 col-sm-offset-1">
-                    <h1>Je ne perds jamais, soit je gagne, soit j’apprends.</h1>
-
-                                        <p class="medium">Nelson Mandela</p>
-                    
-                                    </div>
-            </main>
-        </div>
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-plate">
+        <img src="portail/icons/sec-wordmark.png" alt="SEC Diarra — Société d'Expertise Comptable">
+      </span>
+      <span>Portail applicatif</span>
     </div>
 
+    <nav class="nav" id="nav">
+      <?php foreach ($apps as $a): ?>
+      <a class="app" href="<?= htmlspecialchars($a['url'], ENT_QUOTES) ?>" target="_blank" rel="noopener"
+         style="--accent:<?= htmlspecialchars($a['accent'], ENT_QUOTES) ?>"
+         data-search="<?= htmlspecialchars($a['name'] . ' ' . $a['desc'], ENT_QUOTES) ?>">
+        <span class="plate">
+          <?php if (isset($a['logo'])): ?>
+            <img src="<?= htmlspecialchars($a['logo'], ENT_QUOTES) ?>" alt="">
+          <?php else: ?>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><?= $glyphs[$a['glyph']] ?></svg>
+          <?php endif; ?>
+        </span>
+        <span class="app-txt">
+          <span class="app-name"><?= htmlspecialchars($a['name']) ?></span>
+          <span class="app-desc"><?= htmlspecialchars($a['desc']) ?></span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      </a>
+      <?php endforeach; ?>
+      <p class="no-result" id="noResult">Aucune application ne correspond.</p>
+    </nav>
+
+    <div class="side-foot">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17 10 11l4 4 6-7"/><path d="M20 8v5M20 8h-5"/></svg>
+      <span>Ensemble pour une gestion<br>plus simple et plus efficace</span>
+    </div>
+  </aside>
+
+  <div class="content">
+
+    <header class="topbar">
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/></svg>
+        <input type="search" id="q" placeholder="Rechercher une application…" aria-label="Rechercher une application" autocomplete="off">
+      </div>
+      <div class="topbar-right">
+        <div class="user">
+          <span class="avatar">SD</span>
+          <span class="user-meta">
+            <b>SEC DIARRA</b>
+            <small>Bienvenue</small>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="hero">
+      <div class="hero-inner">
+        <p class="script">Bienvenue sur votre espace</p>
+        <hr class="rule">
+        <h1>Je ne perds jamais,<br>soit je gagne, soit j’apprends.</h1>
+        <p class="author">Nelson Mandela</p>
+      </div>
+
+      <div class="pills">
+        <div class="pill">
+          <span class="pill-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.3-2.9 8.2-7 9.4C7.9 19.2 5 15.3 5 11V6l7-3Z"/><path d="m9.2 11.8 2 2 3.6-3.8"/></svg></span>
+          <p>Des outils fiables<br>et sécurisés</p>
+        </div>
+        <div class="pill">
+          <span class="pill-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4.5 13H11l-1 9 8.5-11H12l1-9Z"/></svg></span>
+          <p>Une gestion plus<br>performante</p>
+        </div>
+        <div class="pill">
+          <span class="pill-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c.6-3.3 3-5.2 6-5.2s5.4 1.9 6 5.2"/><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9M18.2 13.9c2 .8 3.4 2.6 3.8 5.1"/></svg></span>
+          <p>Une équipe<br>plus connectée</p>
+        </div>
+      </div>
+    </main>
+
+  </div>
 </div>
 
+<script>
+(function () {
+  var q = document.getElementById('q');
+  var items = Array.prototype.slice.call(document.querySelectorAll('.app'));
+  var empty = document.getElementById('noResult');
 
+  function norm(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
 
+  q.addEventListener('input', function () {
+    var term = norm(q.value.trim());
+    var shown = 0;
+    items.forEach(function (el) {
+      var hit = !term || norm(el.dataset.search).indexOf(term) !== -1;
+      el.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    empty.style.display = shown ? 'none' : 'block';
+  });
 
-
-    
-
-
-
-
-
-
-</body></html>
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '/' && document.activeElement !== q) {
+      e.preventDefault();
+      q.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>
