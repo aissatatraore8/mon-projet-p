@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annuaire des collaborateurs - Diarrasec</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1><i class="fas fa-address-book"></i> Annuaire des
+          collaborateurs</h1>
+        <p class="subtitle">Diarrasec - Trouvez facilement vos
+          collègues</p>
+      </header>
+
+      <div class="search-container">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="searchInput"
+            placeholder="Rechercher par nom, pseudo, département, titre ou email...">
+          <button id="clearSearch" class="clear-btn"
+            title="Effacer la recherche">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="search-filters">
+          <select id="departmentFilter">
+            <option value>Tous les départements</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="stats">
+        <span id="totalCount">0</span> collaborateur(s) trouvé(s)
+      </div>
+
+      <div class="table-container">
+        <table class="employees-table" id="employeesTable">
+          <thead>
+            <tr>
+              <th>Pseudo</th>
+              <th>Nom</th>
+              <th>Prénoms</th>
+              <th>Département</th>
+              <th>Titre</th>
+              <th>Email</th>
+              <th>Téléphone</th>
+              <th>Interphone</th>
+            </tr>
+          </thead>
+          <tbody id="employeesTableBody">
+            <!-- Les lignes des employés seront générées ici par JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="no-results" id="noResults" style="display: none;">
+        <i class="fas fa-search"></i>
+        <h3>Aucun résultat trouvé</h3>
+        <p>Essayez de modifier vos critères de recherche</p>
+      </div>
+    </div>
+
+    <script>
+        // Données des employés intégrées directement
+        let employees = [
+  {
+    "N°":1,
+    "PSEUDO":"AIG",
+    "NOM": "GUIGMA",
+    "PRENOMS": "Aida",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Directeur de mission",
+    "EMAIL":"aguigma@diarrasec.com ",
+    "MOBILE":"71399414 \/ 07187070",
+    "INTERPHONE":1005.0
+  },
+  {
+    "N°":2,
+    "PSEUDO":"MYL",
+    "NOM": "YEO",
+    "PRENOMS": "Minaguipari Leon",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Directeur de mission",
+    "EMAIL":"lyeo@diarrasec.com",
+    "MOBILE":"70112076 \/ 70207976",
+    "INTERPHONE":1002.0
+  },
+  {
+    "N°":3,
+    "PSEUDO":"OUL",
+    "NOM": "OUEDRAOGO",
+    "PRENOMS": "Lassane",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Directeur de mission",
+    "EMAIL":"louedraogo@diarrasec.com ",
+    "MOBILE":70890393,
+    "INTERPHONE":1006.0
+  },
+  {
+    "N°":4,
+    "PSEUDO":"DOD",
+    "NOM": "DOUMBIA",
+    "PRENOMS": "Djelika",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Directeur de mission",
+    "EMAIL":"ddoumbia@diarrasec.com",
+    "MOBILE":"63985587 \/ 66476329",
+    "INTERPHONE":1002.0
+  },
+  {
+    "N°":5,
+    "PSEUDO":"MOH",
+    "NOM": "HAUKPO",
+    "PRENOMS": "Clarisse Modeste",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Chef de mission senior",
+    "EMAIL":"clarissehaukpo@diarrasec.com",
+    "MOBILE":53436282,
+    "INTERPHONE":1006.0
+  },
+  {
+    "N°":6,
+    "PSEUDO":"YAL",
+    "NOM": "YANOGO",
+    "PRENOMS": "Larissa B.",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Chef de mission senior",
+    "EMAIL":"larissayanogo@diarrasec.com",
+    "MOBILE":"61395985 \/ 79745890",
+    "INTERPHONE":1006.0
+  },
+  {
+    "N°":7,
+    "PSEUDO":"OZI",
+    "NOM": "OUATTARA",
+    "PRENOMS": "Zegue Ismael",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Chef de mission senior",
+    "EMAIL":"iouattara@diarrasec.com",
+    "MOBILE":"70963874 \/ 70204136",
+    "INTERPHONE":null
+  },
+  {
+    "N°":8,
+    "PSEUDO":"BOZ",
+    "NOM": "ZONGO",
+    "PRENOMS": "Boenzemwende",
+    "DEPARTEMENT":"Etude",
+    "TITRE":"Chef de mission senior",
+    "EMAIL":"bzongo@diarrasec.com",
+    "MOBILE":"70203502 \/ 78003888",
+    "INTERPHONE":1006.0
+  },
+  {
+    "N°":9,
+    "PSEUDO":"PAM",
+    "NOM": "PAGABELEM",
+    "PRENOMS": "Michel",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Chef de mission",
+    "EMAIL":"mpagabelem@diarrasec.com",
+    "MOBILE":"72444766 \/ 70207973",
+    "INTERPHONE":null
+  },
+  {
+    "N°":10,
+    "PSEUDO":"ZAC",
+    "NOM": "ZONGO",
+    "PRENOMS": "Abdelaziz Cheik Hassan",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Chef de mission",
+    "EMAIL":"azongo@diarrasec.com",
+    "MOBILE":70998480,
+    "INTERPHONE":1006.0
+  },
+  {
+    "N°":11,
+    "PSEUDO":"FAC",
+    "NOM": "COMPAORE",
+    "PRENOMS": "Fatou",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Chef de mission",
+    "EMAIL":"fcompaore@diarrasec.com",
+    "MOBILE":53906006,
+    "INTERPHONE":1006.0
+  },
+  {
+    "N°":12,
+    "PSEUDO":"MAS",
+    "NOM": "SAGNON",
+    "PRENOMS": "Marius Judicael",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Chef de mission",
+    "EMAIL":"msagnon@diarrasec.com",
+    "MOBILE":70983242,
+    "INTERPHONE":1006.0
+  },
+  {
+    "N°":13,
+    "PSEUDO":"KIM",
+    "NOM": "KINA",
+    "PRENOMS": "Irène Malick Brian",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur senior",
+    "EMAIL":"kinamalick@diarrasec.comkina",
+    "MOBILE":70612121,
+    "INTERPHONE":null
+  },
+  {
+    "N°":14,
+    "PSEUDO":"MEB",
+    "NOM": "BADIERA",
+    "PRENOMS": "Karel Myriam Simone",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur senior",
+    "EMAIL":"bkarel@diarrasec.com ",
+    "MOBILE":75137578,
+    "INTERPHONE":null
+  },
+  {
+    "N°":15,
+    "PSEUDO":"NIS",
+    "NOM": "NIKIEMA",
+    "PRENOMS": "Sandrine Muriel",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur senior",
+    "EMAIL":"snikiema@diarrasec.com",
+    "MOBILE":73154534,
+    "INTERPHONE":1006.0
+  },
+  {
+    "N°":16,
+    "PSEUDO":"ATO",
+    "NOM": "OUEDRAOGO",
+    "PRENOMS": "Thiery Arnaud",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur senior",
+    "EMAIL":"thierry@diarrasec.com",
+    "MOBILE":74086920,
+    "INTERPHONE":null
+  },
+  {
+    "N°":17,
+    "PSEUDO":"SOM",
+    "NOM": "KPIELE",
+    "PRENOMS": "Some I. Rose Marie Sophie",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur senior",
+    "EMAIL":"marierose@diarrase.com",
+    "MOBILE":"05954622 \/ 64480552",
+    "INTERPHONE":1008.0
+  },
+  {
+    "N°":18,
+    "PSEUDO":"NAS",
+    "NOM": "ABDOU",
+    "PRENOMS": "Saidou Nadia",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur junior",
+    "EMAIL":"asaidou@diarrasec.com",
+    "MOBILE":1564625,
+    "INTERPHONE":null
+  },
+  {
+    "N°":19,
+    "PSEUDO":"BAB",
+    "NOM": "BATIONO",
+    "PRENOMS": "Astride Bezoirie",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur junior",
+    "EMAIL":"abationo@diarrasec.com",
+    "MOBILE":67981866,
+    "INTERPHONE":null
+  },
+  {
+    "N°":20,
+    "PSEUDO":"SOF",
+    "NOM": "SOURA",
+    "PRENOMS": "Famené Aline Saratou",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur junior",
+    "EMAIL":"alinesoura@diarrasec.com",
+    "MOBILE":70115293,
+    "INTERPHONE":null
+  },
+  {
+    "N°":21,
+    "PSEUDO":"ZOK",
+    "NOM": "ZOUNGRANA",
+    "PRENOMS": "Oumou Kadidja",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur junior",
+    "EMAIL":"oumouzoungrana@diarrasec.com ",
+    "MOBILE":72999924,
+    "INTERPHONE":null
+  },
+  {
+    "N°":22,
+    "PSEUDO":"BAS",
+    "NOM": "BARA",
+    "PRENOMS": "Alimatou Sadia",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur junior",
+    "EMAIL":"sadiabara@diarrasec.com",
+    "MOBILE":60160697,
+    "INTERPHONE":1008.0
+  },
+  {
+    "N°":23,
+    "PSEUDO":"BAM",
+    "NOM": "BARRO",
+    "PRENOMS": "Matène",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur junior",
+    "EMAIL":"m.barro@diarrasec.com",
+    "MOBILE":57323007,
+    "INTERPHONE":null
+  },
+  {
+    "N°":24,
+    "PSEUDO":"OTE",
+    "NOM": "OUEDRAOGO",
+    "PRENOMS": "Esther Theresia",
+    "DEPARTEMENT":"Audit",
+    "TITRE":"Auditeur junior",
+    "EMAIL":"touedraogo@gmail.com",
+    "MOBILE":57122624,
+    "INTERPHONE":null
+  },
+  {
+    "N°":25,
+    "PSEUDO":"ZOM",
+    "NOM": "ZOUNGRANA",
+    "PRENOMS": "Mahamadi",
+    "DEPARTEMENT":"Management",
+    "TITRE":"Associé gérant",
+    "EMAIL":"zoungrana@diarrasec.com",
+    "MOBILE":"70239138 \/ 79239138",
+    "INTERPHONE":1003
+  },
+  {
+    "N°":26,
+    "PSEUDO":"COF",
+    "NOM": "COMPAORE",
+    "PRENOMS": "Fatimata",
+    "DEPARTEMENT":"Administration",
+    "TITRE":"Assistante senior",
+    "EMAIL":"burkina@diarrasec.com",
+    "MOBILE":"71126090\/ 78243937",
+    "INTERPHONE":1001
+  },
+  {
+    "N°":27,
+    "PSEUDO":"3M",
+    "NOM": "MAKERI",
+    "PRENOMS": "Mohamed M",
+    "DEPARTEMENT":"Administration",
+    "TITRE":"Agent de liaison",
+    "EMAIL":"RAS",
+    "MOBILE":"72004736 \/ 69859400",
+    "INTERPHONE":null
+  },
+  {
+    "N°":28,
+    "PSEUDO":"OUIYA",
+    "NOM": "OUIYA",
+    "PRENOMS": "Jean Paul",
+    "DEPARTEMENT":"Technologie",
+    "TITRE":"Responsable informatique",
+    "EMAIL":"jpouiya@diarrasec.com ",
+    "MOBILE":70868947,
+    "INTERPHONE":1007
+  },
+  {
+    "N°":29,
+    "PSEUDO":"BAM",
+    "NOM": "BARRY",
+    "PRENOMS": "Moussa",
+    "DEPARTEMENT":"Administration",
+    "TITRE":"Agent de liaison",
+    "EMAIL":"RAS",
+    "MOBILE":72232214,
+    "INTERPHONE":null
+  },
+  {
+    "N°":30,
+    "PSEUDO":"ASA",
+    "NOM": "SANOU",
+    "PRENOMS": "Hadjaratou",
+    "DEPARTEMENT":"Administration",
+    "TITRE":"Assistant junior",
+    "EMAIL":"bobo@diarrasec.com",
+    "MOBILE":64132314,
+    "INTERPHONE":null
+  },
+  {
+    "N°":31,
+    "PSEUDO":"ALS",
+    "NOM": "SANA",
+    "PRENOMS": "Ali",
+    "DEPARTEMENT":"Administration",
+    "TITRE":"Rafc\/RH",
+    "EMAIL":"compta.bf@diarrasec.com",
+    "MOBILE":"63453628 \/ 79626259",
+    "INTERPHONE":1007
+  },
+  {
+    "N°":32,
+    "PSEUDO":"KAZ",
+    "NOM": "KABORE",
+    "PRENOMS": "Kadiguetou",
+    "DEPARTEMENT":"Administration",
+    "TITRE":"Assistant senior",
+    "EMAIL":"kkabore@diarrasec.com",
+    "MOBILE":70698342,
+    "INTERPHONE":1004
+  },
+  {
+    "N°":33,
+    "PSEUDO":"MBA",
+    "NOM": "BAMA",
+    "PRENOMS": "Moïse",
+    "DEPARTEMENT":"Administration",
+    "TITRE":"Assistant senior",
+    "EMAIL":"mbama@diarrasec.com",
+    "MOBILE":"71838077 \/ 79045455",
+    "INTERPHONE":1004
+  },
+  {
+    "N°":34,
+    "PSEUDO":"GAB",
+    "NOM": "GANSONRE",
+    "PRENOMS": "Boniface",
+    "DEPARTEMENT":"Administration",
+    "TITRE":"Assistant junior",
+    "EMAIL":"bgansonre@diarrasec.com ",
+    "MOBILE":74282946,
+    "INTERPHONE":1004
+  },
+  {
+    "N°":35,
+    "PSEUDO":"POS",
+    "NOM": "PORGO",
+    "PRENOMS": "Salif",
+    "DEPARTEMENT":"Archives",
+    "TITRE":"Archiviste",
+    "EMAIL":"En cours",
+    "MOBILE":77188782,
+    "INTERPHONE":null
+  },
+  {
+    "N°":36,
+    "PSEUDO":"DIS",
+    "NOM": "DISSA",
+    "PRENOMS": "Youssouf",
+    "DEPARTEMENT":"Administration",
+    "TITRE":"Assistant junior",
+    "EMAIL":"youssoufdissa@diarrasec.com",
+    "MOBILE":7071863,
+    "INTERPHONE":1004
+  },
+  {
+    "N°":37,
+    "PSEUDO":"NEC",
+    "NOM": "ZOUNGRANA",
+    "PRENOMS": "Neimatou",
+    "DEPARTEMENT":"Administration",
+    "TITRE":"Assistant junior",
+    "EMAIL":"ncompaore@diarrasec.com",
+    "MOBILE":"72340917 \/ 78144552",
+    "INTERPHONE":1000
+  }
+];
+
+        // Initialiser l'affichage
+        displayEmployees(employees);
+        populateFilters();
+        updateStats(employees.length);
+
+        // Fonction pour afficher les employés
+        function displayEmployees(employeesToShow) {
+            const table = document.getElementById('employeesTable');
+            const tableBody = document.getElementById('employeesTableBody');
+            const noResults = document.getElementById('noResults');
+            
+            if (employeesToShow.length === 0) {
+                table.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            table.style.display = 'table';
+            noResults.style.display = 'none';
+            
+            tableBody.innerHTML = employeesToShow.map(employee => `
+                <tr>
+                    <td><span class="pseudo-badge">${employee.PSEUDO}</span></td>
+                    <td>${employee.NOM}</td>
+                    <td>${employee.PRENOMS}</td>
+                    <td>${employee.DEPARTEMENT}</td>
+                    <td>${employee.TITRE}</td>
+                    <td><a href="mailto:${employee.EMAIL}">${employee.EMAIL}</a></td>
+                    <td><a href="tel:${employee.MOBILE}">${employee.MOBILE}</a></td>
+                    <td>${employee.INTERPHONE || '-'}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Fonction pour peupler les filtres
+        function populateFilters() {
+            const departments = [...new Set(employees.map(emp => emp.DEPARTEMENT))].sort();
+            
+            const deptFilter = document.getElementById('departmentFilter');
+            
+            departments.forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept;
+                option.textContent = dept;
+                deptFilter.appendChild(option);
+            });
+        }
+
+        // Fonction de recherche
+        function searchEmployees() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const deptFilter = document.getElementById('departmentFilter').value;
+            
+            const filtered = employees.filter(employee => {
+                const matchesSearch = !searchTerm || 
+                    employee.NOM.toLowerCase().includes(searchTerm) ||
+                    employee.PRENOMS.toLowerCase().includes(searchTerm) ||
+                    employee.PSEUDO.toLowerCase().includes(searchTerm) ||
+                    employee.DEPARTEMENT.toLowerCase().includes(searchTerm) ||
+                    employee.TITRE.toLowerCase().includes(searchTerm) ||
+                    employee.EMAIL.toLowerCase().includes(searchTerm);
+                
+                const matchesDept = !deptFilter || employee.DEPARTEMENT === deptFilter;
+                
+                return matchesSearch && matchesDept;
+            });
+            
+            displayEmployees(filtered);
+            updateStats(filtered.length);
+        }
+
+        // Fonction pour mettre à jour les statistiques
+        function updateStats(count) {
+            document.getElementById('totalCount').textContent = count;
+        }
+
+        // Fonction pour effacer la recherche
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('departmentFilter').value = '';
+            searchEmployees();
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', searchEmployees);
+        document.getElementById('departmentFilter').addEventListener('change', searchEmployees);
+        document.getElementById('clearSearch').addEventListener('click', clearSearch);
+
+        // Recherche en temps réel avec debounce
+        let searchTimeout;
+        document.getElementById('searchInput').addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(searchEmployees, 300);
+        });
+    </script>
+  </body>
+</html>
