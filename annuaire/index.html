@@ -10,8 +10,13 @@
     <header>
         <h1>Annuaire SEC</h1>
     </header>
-    
-  <div class="table-container">  
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Rechercher par nom, pseudo, email, téléphone ou fonction...">
+        <button id="clearSearch">Effacer</button>
+    </div>
+
+  <div class="table-container">
   <div class="table-horizontal-container">
     <table class="unfixed-table">
       <thead>
@@ -22,87 +27,222 @@
             <th>E-MAIL</th>
             <th>TELEPHONE</th>
             <th>GRADE/FONCTION</th>
+            <th>ACTIONS</th>
         </tr>
       </thead>
-      <tbody>
-        <tr><td>100</td><td>KAK</td><td>Kadiatou KANOUTE</td><td>ckanoute@diarrasec.com</td><td>79 35 51 16</td><td>Assistante Administrative</td></tr>
-        <tr><td>103</td><td>DTR</td><td>Dramane TRAORE</td><td>dtraore@diarrasec.com</td><td>82 75 00 04</td><td>Auditeur Senior</td></tr>
-        <tr><td>103</td><td>DAS</td><td>Sidi Abdoulaye DIAMOYE</td><td>sadiamoye@diarrasec.com</td><td>78 32 51 05/67 98 14 90</td><td>Auditeur Comptable et Financier</td></tr>
-        <tr><td>103</td><td>KIN</td><td>Issa N'Golo KONE</td><td>issangolo@diarrasec.com</td><td>61 48 74 78</td><td>Auditeur Senior</td></tr>
-        <tr><td>102</td><td>MAG</td><td>Mohamed Amadou GOUANLE</td><td>magouanle@diarrasec.com</td><td>65 50 90 90</td><td>Auditeur Senior</td></tr>
-        <tr><td>102</td><td>IDI</td><td>Drissa OUATTARA</td><td>odrissa@diarrasec.com</td><td>76 22 68 57</td><td>Auditeur Senior</td></tr>
-        <tr><td>104</td><td> - </td><td>SALLE DE REUNION</td><td> - </td><td> - </td><td> - </td></tr>
-        <tr><td>190</td><td>MOC</td><td>Mohamed CAMARA</td><td>mcamara@diarrasec.com</td><td>90 42 66 06</td><td>Auditeur Comptable et Financier</td></tr>
-        <tr><td>190</td><td>BOS</td><td>Souleymane BOMBA</td><td>sbomba@diarrasec.com</td><td>90 06 71 14</td><td>Auditeur Comptable et Financier</td></tr>
-        <tr><td>110</td><td>OCY</td><td>Oulematou COULIBALY</td><td>ocoulibaly@diarrasec.com</td><td>74 57 00 12</td><td>Auditeur Comptable et Financier</td></tr>
-        <tr><td>110</td><td>SWK</td><td>Sana Woni KASSE</td><td>ksana@diarrasec.com</td><td>79 72 51 64</td><td>Auditeur Comptable et Financier</td></tr>
-        <tr><td>110</td><td>OSY</td><td>Oumar SY</td><td>syoumar@diarrasec.com</td><td>77 07 77 47</td><td>Auditeur Comptable et Financier</td></tr>
-        <tr><td>190</td><td>ACI</td><td>Assata Ali CISSE</td><td>acisse@diarrasec.com</td><td>82 02 25 35</td><td>Auditeur Comptable et Financier</td></tr>
-        <tr><td>191</td><td>BAB</td><td>Abdramane BAH</td><td>babdramane@diarrasec.com</td><td>78 86 90 14/62 95 39 39</td><td>Auditeur Senior</td></tr>
-        <tr><td>108</td><td>ABA</td><td>Amadou BA</td><td>aba@diarrasec.com</td><td>97 61 15 79</td><td>Chef de Mission, Spécialiste en Passation de Marchés</td></tr>
-        <tr><td>105</td><td>LAD</td><td>GNAKOURI Dadi Gohouri Landry-Crépin</td><td>landrycrepin@diarrasec.com</td><td>90 40 20 02/50 79 66 79</td><td>Chef de Mission Senior</td></tr>
-        <tr><td>105</td><td>HSO</td><td>Hamadoun SOW</td><td>hamadounsow@diarrasec.com</td><td>71 26 74 95</td><td>Chef de Mission</td></tr>
-        <tr><td>132</td><td>JEK</td><td>Jeannice KOTOKPO</td><td>jgreyakoli@diarrasec.com</td><td>61 85 67 62</td><td>Chef de Mission</td></tr>
-        <tr><td>182</td><td>FAK</td><td>Fatoumata KONFROU</td><td>fkonfrou@diarrasec.com</td><td>76 19 46 31</td><td>Chef de Mission Senior</td></tr>
-        <tr><td>201</td><td>COUZE</td><td>Mme DIARRA</td><td>couze@diarrasec.com</td><td>66 75 65 01</td><td>Associée</td></tr>
-        <tr><td>203</td><td>MAC</td><td>Mahamadou CISSE</td><td>mahacisse@diarrasec.com</td><td>79 96 44 28</td><td>Assistant Comptable</td></tr>
-        <tr><td>203</td><td>TIM</td><td>Tiemoko MARIKO</td><td>tmariko@diarrasec.com</td><td>71 25 76 20</td><td>Assistant Comptable</td></tr>
-        <tr><td>216</td><td>DJT</td><td>Djelika TRAORE</td><td>tdjelika@diarrasec.com</td><td>72 60 01 10</td><td>Assistante Comptable</td></tr>
-        <tr><td>216</td><td>DIM</td><td>Diakardia MARIKO</td><td>dmariko@diarrasec.com</td><td>77 39 88 66</td><td>Assistant Comptable</td></tr>
-        <tr><td>205</td><td>MBA</td><td>Mahamoudou BAGAYOGO</td><td>mbagayogo@diarrasec.com</td><td>77 82 21 29  -  66 75 89 83</td><td>Chef Comptable</td></tr>
-        <tr><td>210</td><td>LIF</td><td>LIF</td><td>lif@diarrasec.com  -  ysalissou@sitaninfo.com</td><td>74 46 63 17</td><td>Directeur Technique Associé - SITAN</td></tr>
-        <tr><td>213</td><td>OUS</td><td>Ousmane DIARRA</td><td>ousmane@diarrasec.com  -  webmaster@diarrasec.com</td><td>66 75 27 05</td><td>Associé</td></tr>
-        <tr><td>212</td><td>AYD</td><td>Aboubacar Yaya DOUMBERE</td><td>adoumbere@sitaninfo.com</td><td>74 93 15 62</td><td>Technico commercial</td></tr>
-        <tr><td>212</td><td>STA</td><td>Seydou TOLOBA</td><td>stoloba@sitaninfo.com</td><td>74 22 06 03</td><td>Développeur</td></tr>
-        <tr><td>212</td><td>TCD</td><td>Toumany dit Christophe DIARRA</td><td>tchristophe@sitaninfo.com</td><td>96 85 52 82</td><td>Développeur</td></tr>
-        <tr><td>211</td><td>MCA</td><td>Mahamadou CAMARA</td><td>mcamara@sitaninfo.com</td><td>71 96 66 11 / 66 53 50 08</td><td>Responsable infogérance</td></tr>
-        <tr><td>206</td><td>MSK</td><td>Mohamed SISSOKO</td><td>msissoko@diarrasec.com</td><td>92 51 50 01</td><td>Auditeur Senior</td></tr>
-        <tr><td>120</td><td>ALK</td><td>Almoustapha KONE</td><td>alkone@diarrasec.com</td><td>77 05 59 34</td><td>Auditeur Comptable et Financier</td></tr>
-        <tr><td>120</td><td>MAO</td><td>Ousmane MALLE</td><td>omalle@diarrasec.com</td><td>71 77 81 03</td><td>Auditeur Comptable et Financier</td></tr>
-        <tr><td>208</td><td>YEM</td><td>Yao Michel EGBEMBLE</td><td>michelyao@diarrasec.com</td><td>64 93 03 86</td><td>Chef de Mission Senior, Directeur technique adjoint</td></tr>
-        <tr><td>208</td><td>HCI</td><td>Hamadoun CISSE</td><td>hcisse@diarrasec.com</td><td>60 80 80 00</td><td>Chef de Mission</td></tr>
-        <tr><td>207</td><td>GAM</td><td>Jean Marc Aurel GBAGUIDI</td><td>gaurel@diarrasec.com</td><td>71 70 46 21</td><td>Chef de Mission Senior</td></tr>
-        <tr><td>207</td><td>CAS</td><td>Cheick Hamala SYLLA</td><td>hamala.sylla@diarrasec.com</td><td>66 82 04 78 / 75 66 18 04</td><td>Chef de Mission</td></tr>
-        <tr><td>204</td><td> - </td><td>SALLE DES ASSISTANTS AUDIT</td><td> - </td><td> - </td><td> - </td></tr>
-        <tr><td>217</td><td>TAM</td><td>Mahomed TAKPARA</td><td>mtakpara@diarrasec.com</td><td>91 73 34 14</td><td>Chef de Mission</td></tr>
-        <tr><td>202</td><td>DAD</td><td>Amadou DIAKITE</td><td>adiakite@diarrasec.com</td><td>66 05 09 06</td><td>Chef de Mission</td></tr>
-        <tr><td>304</td><td>YAS</td><td>Yacouba SIDIBE</td><td>yacoubasidibe@diarrasec.com</td><td>75 01 24 82 / 63 45 81 84</td><td>Chargé de Developpement</td></tr>
-        <tr><td>307</td><td>DOS</td><td>Samba DOUMBIA</td><td>doumbia@diarrasec.com</td><td>78 53 36 12 / 66 81 82 33</td><td>Assistant Administratif</td></tr>
-        <tr><td>112</td><td> - </td><td>SALLE DE REUNION ( SAM )</td><td> - </td><td> - </td><td> - </td></tr>
-        <tr><td>301</td><td>SAM</td><td>Sékou DIARRA</td><td>sam@diarrasec.com</td><td>66 75 09 53 / +336 17 27 15 82</td><td>Associé - Gérant</td></tr>
-        <tr><td>302</td><td>HAD</td><td>Harouna DRAME</td><td>drame@diarrasec.com</td><td>76 40 92 68 / 66 74 47 22</td><td>Associé - Directeur Général</td></tr>
-        <tr><td>305</td><td>SAH</td><td>Hawa Sangaré</td><td>hawasang@diarrasec.com</td><td>75 19 88 44</td><td>Responsable des Services Généraux</td></tr>
-        <tr><td>306</td><td>STD</td><td>Souleymane Tiécoura Daou</td><td>dsouleymane@diarrasec.com</td><td>74 16 01 06</td><td>Chargé de Développement</td></tr>
-        <tr><td>315</td><td>SKB</td><td>Sékou Kaou Ba</td><td>skba@diarrasec.com</td><td>66 03 44 07 / 50 07 33 22</td><td>Assistant Administratif</td></tr>
-        <tr><td>316</td><td>DRT</td><td>Idrissa Traoré</td><td>drissatraore@diarrasec.com</td><td>65 89 97 34 / 76 16 96 71</td><td>Chargé de Développement</td></tr>
-        <tr><td>313</td><td>DEM</td><td>Modibo Dembélé</td><td>mdembele@diarrasec.com</td><td>68 25 55 35</td><td>Secrétaire Général</td></tr>
-        <tr><td>310</td><td>MBA</td><td>Mahamoudou Bagayogo</td><td>mbagayogo@diarrasec.com</td><td>77 82 21 29 / 66 75 89 83</td><td>Responsable Comptable et Financier</td></tr>
-        <tr><td>310</td><td>MCO</td><td>Maïmouna Néné Coulibaly</td><td>mcoulibaly@diarrasec.com</td><td>76 46 23 02</td><td>Assistante Comptable</td></tr>
-        <tr><td>310</td><td>DIM</td><td>Diakardia Mariko</td><td>dmariko@diarrasec.com</td><td>77 39 88 66</td><td>Assistant Comptable</td></tr>
-        <tr><td>303</td><td>SLY</td><td>Silamakan Dianka</td><td>sila@diarrasec.com</td><td>66 94 20 14</td><td>Directeur Technique - Associé</td></tr>
-        <tr><td>401</td><td> - </td><td>Archives</td><td> - </td><td> - </td><td> - </td></tr>
-        <tr><td>402</td><td> - </td><td>Secrétariat MOM</td><td> - </td><td> - </td><td> - </td></tr>
-        <tr><td>404</td><td>MOM</td><td>Moussa MARA</td><td>mara@diarrasec.com</td><td>66 75 51 77</td><td>Associé</td></tr>
-        <tr><td>410</td><td> - </td><td>Ancienne salle des assistants</td><td> - </td><td> - </td><td> - </td></tr>
-        <tr><td>411 / 412</td><td>SCI</td><td>Sanounou CISSE</td><td>scisse@sitaninfo</td><td>76 47 68 67</td><td>Maintenance Informatique - SITAN</td></tr>
-        <tr><td>Direction</td><td> - </td><td> - </td><td> - </td><td> - </td><td>directionbko@diarrasec.com</td></tr>
-        <tr><td>Equipe Technique</td><td> - </td><td> - </td><td> - </td><td> - </td><td>auditbko@diarrasec.com</td></tr>
-        <tr><td>Equipe Administration</td><td> - </td><td> - </td><td> - </td><td> - </td><td>admin@diarrasec.com</td></tr>
-        <tr><td>Finances</td><td> - </td><td> - </td><td> - </td><td> - </td><td>financesbko@diarrasec.com</td></tr>
-        <tr><td>Sitan Info</td><td> - </td><td> - </td><td> - </td><td> - </td><td>groupesitan@sitaninfo.com</td></tr>
-        <tr><td>Tout le personnel</td><td> - </td><td> - </td><td> - </td><td> - </td><td>infobko@diarrasec.com</td></tr>
-        <tr><td>PERSONNEL D'APPUI</td><td> - </td><td>Yoro FANE</td><td>Chauffeur</td><td>66 00 44 99</td><td> - </td></tr>
-        <tr><td> - </td><td> - </td><td>THOMAS</td><td>Gardien</td><td>72 79 74 87</td><td> - </td></tr>
-        <tr><td> - </td><td> - </td><td>BENGHALY CISSE DIT HADJI</td><td>Coursier</td><td>94 23 31 45</td><td> - </td></tr>
-        <tr><td> - </td><td> - </td><td>Amadou KEITA DIT BOUBA</td><td>Coursier</td><td>60 54 54 04</td><td> - </td></tr>
-        <tr><td> - </td><td> - </td><td>Jean BERNARD SIDIBE</td><td>Chauffeur</td><td>76 03 19 59</td><td> - </td></tr>
-        <tr><td> - </td><td> - </td><td>Souleymane THIERO</td><td>Chauffeur</td><td>77 80 65 32</td><td> - </td></tr>
-        <tr><td> - </td><td> - </td><td>ELISEE</td><td>Gardien</td><td>77 85 54 15</td><td> - </td></tr>
+      <tbody id="tableBody">
+        <!-- Les données seront générées par JavaScript -->
       </tbody>
     </table>
   </div>
 </div>
-</object>
-</article>
+
+<!-- Fenêtre modale d'édition -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <h2>Modifier les informations</h2>
+        <form id="editForm">
+            <input type="hidden" id="editIndex">
+            <div class="form-group">
+                <label for="editInterphone">N° INTERPHONE:</label>
+                <input type="text" id="editInterphone" required>
+            </div>
+            <div class="form-group">
+                <label for="editPseudo">PSEUDO:</label>
+                <input type="text" id="editPseudo" required>
+            </div>
+            <div class="form-group">
+                <label for="editNom">PRENOM et NOM:</label>
+                <input type="text" id="editNom" required>
+            </div>
+            <div class="form-group">
+                <label for="editEmail">E-MAIL:</label>
+                <input type="email" id="editEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="editTelephone">TELEPHONE:</label>
+                <input type="text" id="editTelephone" required>
+            </div>
+            <div class="form-group">
+                <label for="editFonction">GRADE/FONCTION:</label>
+                <input type="text" id="editFonction" required>
+            </div>
+            <div class="form-buttons">
+                <button type="submit">Sauvegarder</button>
+                <button type="button" id="cancelEdit">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Données des employés
+    let employees = [
+        { interphone: "100", pseudo: "KAK", nom: "Kadiatou KANOUTE", email: "ckanoute@diarrasec.com", telephone: "79 35 51 16", fonction: "Assistante Administrative" },
+        { interphone: "103", pseudo: "DTR", nom: "Dramane TRAORE", email: "dtraore@diarrasec.com", telephone: "82 75 00 04", fonction: "Auditeur Senior" },
+        { interphone: "103", pseudo: "DAS", nom: "Sidi Abdoulaye DIAMOYE", email: "sadiamoye@diarrasec.com", telephone: "78 32 51 05/67 98 14 90", fonction: "Auditeur Comptable et Financier" },
+        { interphone: "103", pseudo: "KIN", nom: "Issa N'Golo KONE", email: "issangolo@diarrasec.com", telephone: "61 48 74 78", fonction: "Auditeur Senior" },
+        { interphone: "102", pseudo: "MAG", nom: "Mohamed Amadou GOUANLE", email: "magouanle@diarrasec.com", telephone: "65 50 90 90", fonction: "Auditeur Senior" },
+        { interphone: "102", pseudo: "IDI", nom: "Drissa OUATTARA", email: "odrissa@diarrasec.com", telephone: "76 22 68 57", fonction: "Auditeur Senior" },
+        { interphone: "104", pseudo: "-", nom: "SALLE DE REUNION", email: "-", telephone: "-", fonction: "-" },
+        { interphone: "190", pseudo: "MOC", nom: "Mohamed CAMARA", email: "mcamara@diarrasec.com", telephone: "90 42 66 06", fonction: "Auditeur Comptable et Financier" },
+        { interphone: "190", pseudo: "BOS", nom: "Souleymane BOMBA", email: "sbomba@diarrasec.com", telephone: "90 06 71 14", fonction: "Auditeur Comptable et Financier" },
+        { interphone: "110", pseudo: "OCY", nom: "Oulematou COULIBALY", email: "ocoulibaly@diarrasec.com", telephone: "74 57 00 12", fonction: "Auditeur Comptable et Financier" },
+        { interphone: "110", pseudo: "SWK", nom: "Sana Woni KASSE", email: "ksana@diarrasec.com", telephone: "79 72 51 64", fonction: "Auditeur Comptable et Financier" },
+        { interphone: "110", pseudo: "OSY", nom: "Oumar SY", email: "syoumar@diarrasec.com", telephone: "77 07 77 47", fonction: "Auditeur Comptable et Financier" },
+        { interphone: "190", pseudo: "ACI", nom: "Assata Ali CISSE", email: "acisse@diarrasec.com", telephone: "82 02 25 35", fonction: "Auditeur Comptable et Financier" },
+        { interphone: "191", pseudo: "BAB", nom: "Abdramane BAH", email: "babdramane@diarrasec.com", telephone: "78 86 90 14/62 95 39 39", fonction: "Auditeur Senior" },
+        { interphone: "108", pseudo: "ABA", nom: "Amadou BA", email: "aba@diarrasec.com", telephone: "97 61 15 79", fonction: "Chef de Mission, Spécialiste en Passation de Marchés" },
+        { interphone: "105", pseudo: "LAD", nom: "GNAKOURI Dadi Gohouri Landry-Crépin", email: "landrycrepin@diarrasec.com", telephone: "90 40 20 02/50 79 66 79", fonction: "Chef de Mission Senior" },
+        { interphone: "105", pseudo: "HSO", nom: "Hamadoun SOW", email: "hamadounsow@diarrasec.com", telephone: "71 26 74 95", fonction: "Chef de Mission" },
+        { interphone: "132", pseudo: "JEK", nom: "Jeannice KOTOKPO", email: "jgreyakoli@diarrasec.com", telephone: "61 85 67 62", fonction: "Chef de Mission" },
+        { interphone: "182", pseudo: "FAK", nom: "Fatoumata KONFROU", email: "fkonfrou@diarrasec.com", telephone: "76 19 46 31", fonction: "Chef de Mission Senior" },
+        { interphone: "201", pseudo: "COUZE", nom: "Mme DIARRA", email: "couze@diarrasec.com", telephone: "66 75 65 01", fonction: "Associée" },
+        { interphone: "203", pseudo: "MAC", nom: "Mahamadou CISSE", email: "mahacisse@diarrasec.com", telephone: "79 96 44 28", fonction: "Assistant Comptable" },
+        { interphone: "203", pseudo: "TIM", nom: "Tiemoko MARIKO", email: "tmariko@diarrasec.com", telephone: "71 25 76 20", fonction: "Assistant Comptable" },
+        { interphone: "216", pseudo: "DJT", nom: "Djelika TRAORE", email: "tdjelika@diarrasec.com", telephone: "72 60 01 10", fonction: "Assistante Comptable" },
+        { interphone: "216", pseudo: "DIM", nom: "Diakardia MARIKO", email: "dmariko@diarrasec.com", telephone: "77 39 88 66", fonction: "Assistant Comptable" },
+        { interphone: "205", pseudo: "MBA", nom: "Mahamoudou BAGAYOGO", email: "mbagayogo@diarrasec.com", telephone: "77 82 21 29  -  66 75 89 83", fonction: "Chef Comptable" },
+        { interphone: "210", pseudo: "LIF", nom: "LIF", email: "lif@diarrasec.com  -  ysalissou@sitaninfo.com", telephone: "74 46 63 17", fonction: "Directeur Technique Associé - SITAN" },
+        { interphone: "213", pseudo: "OUS", nom: "Ousmane DIARRA", email: "ousmane@diarrasec.com  -  webmaster@diarrasec.com", telephone: "66 75 27 05", fonction: "Associé" },
+        { interphone: "212", pseudo: "AYD", nom: "Aboubacar Yaya DOUMBERE", email: "adoumbere@sitaninfo.com", telephone: "74 93 15 62", fonction: "Technico commercial" },
+        { interphone: "212", pseudo: "STA", nom: "Seydou TOLOBA", email: "stoloba@sitaninfo.com", telephone: "74 22 06 03", fonction: "Développeur" },
+        { interphone: "212", pseudo: "TCD", nom: "Toumany dit Christophe DIARRA", email: "tchristophe@sitaninfo.com", telephone: "96 85 52 82", fonction: "Développeur" },
+        { interphone: "211", pseudo: "MCA", nom: "Mahamadou CAMARA", email: "mcamara@sitaninfo.com", telephone: "71 96 66 11 / 66 53 50 08", fonction: "Responsable infogérance" },
+        { interphone: "206", pseudo: "MSK", nom: "Mohamed SISSOKO", email: "msissoko@diarrasec.com", telephone: "92 51 50 01", fonction: "Auditeur Senior" },
+        { interphone: "120", pseudo: "ALK", nom: "Almoustapha KONE", email: "alkone@diarrasec.com", telephone: "77 05 59 34", fonction: "Auditeur Comptable et Financier" },
+        { interphone: "120", pseudo: "MAO", nom: "Ousmane MALLE", email: "omalle@diarrasec.com", telephone: "71 77 81 03", fonction: "Auditeur Comptable et Financier" },
+        { interphone: "208", pseudo: "YEM", nom: "Yao Michel EGBEMBLE", email: "michelyao@diarrasec.com", telephone: "64 93 03 86", fonction: "Chef de Mission Senior, Directeur technique adjoint" },
+        { interphone: "208", pseudo: "HCI", nom: "Hamadoun CISSE", email: "hcisse@diarrasec.com", telephone: "60 80 80 00", fonction: "Chef de Mission" },
+        { interphone: "207", pseudo: "GAM", nom: "Jean Marc Aurel GBAGUIDI", email: "gaurel@diarrasec.com", telephone: "71 70 46 21", fonction: "Chef de Mission Senior" },
+        { interphone: "207", pseudo: "CAS", nom: "Cheick Hamala SYLLA", email: "hamala.sylla@diarrasec.com", telephone: "66 82 04 78 / 75 66 18 04", fonction: "Chef de Mission" },
+        { interphone: "204", pseudo: "-", nom: "SALLE DES ASSISTANTS AUDIT", email: "-", telephone: "-", fonction: "-" },
+        { interphone: "217", pseudo: "TAM", nom: "Mahomed TAKPARA", email: "mtakpara@diarrasec.com", telephone: "91 73 34 14", fonction: "Chef de Mission" },
+        { interphone: "202", pseudo: "DAD", nom: "Amadou DIAKITE", email: "adiakite@diarrasec.com", telephone: "66 05 09 06", fonction: "Chef de Mission" },
+        { interphone: "304", pseudo: "YAS", nom: "Yacouba SIDIBE", email: "yacoubasidibe@diarrasec.com", telephone: "75 01 24 82 / 63 45 81 84", fonction: "Chargé de Developpement" },
+        { interphone: "307", pseudo: "DOS", nom: "Samba DOUMBIA", email: "doumbia@diarrasec.com", telephone: "78 53 36 12 / 66 81 82 33", fonction: "Assistant Administratif" },
+        { interphone: "112", pseudo: "-", nom: "SALLE DE REUNION ( SAM )", email: "-", telephone: "-", fonction: "-" },
+        { interphone: "301", pseudo: "SAM", nom: "Sékou DIARRA", email: "sam@diarrasec.com", telephone: "66 75 09 53 / +336 17 27 15 82", fonction: "Associé - Gérant" },
+        { interphone: "302", pseudo: "HAD", nom: "Harouna DRAME", email: "drame@diarrasec.com", telephone: "76 40 92 68 / 66 74 47 22", fonction: "Associé - Directeur Général" },
+        { interphone: "305", pseudo: "SAH", nom: "Hawa Sangaré", email: "hawasang@diarrasec.com", telephone: "75 19 88 44", fonction: "Responsable des Services Généraux" },
+        { interphone: "306", pseudo: "STD", nom: "Souleymane Tiécoura Daou", email: "dsouleymane@diarrasec.com", telephone: "74 16 01 06", fonction: "Chargé de Développement" },
+        { interphone: "315", pseudo: "SKB", nom: "Sékou Kaou Ba", email: "skba@diarrasec.com", telephone: "66 03 44 07 / 50 07 33 22", fonction: "Assistant Administratif" },
+        { interphone: "316", pseudo: "DRT", nom: "Idrissa Traoré", email: "drissatraore@diarrasec.com", telephone: "65 89 97 34 / 76 16 96 71", fonction: "Chargé de Développement" },
+        { interphone: "313", pseudo: "DEM", nom: "Modibo Dembélé", email: "mdembele@diarrasec.com", telephone: "68 25 55 35", fonction: "Secrétaire Général" },
+        { interphone: "310", pseudo: "MBA", nom: "Mahamoudou Bagayogo", email: "mbagayogo@diarrasec.com", telephone: "77 82 21 29 / 66 75 89 83", fonction: "Responsable Comptable et Financier" },
+        { interphone: "310", pseudo: "MCO", nom: "Maïmouna Néné Coulibaly", email: "mcoulibaly@diarrasec.com", telephone: "76 46 23 02", fonction: "Assistante Comptable" },
+        { interphone: "310", pseudo: "DIM", nom: "Diakardia Mariko", email: "dmariko@diarrasec.com", telephone: "77 39 88 66", fonction: "Assistant Comptable" },
+        { interphone: "303", pseudo: "SLY", nom: "Silamakan Dianka", email: "sila@diarrasec.com", telephone: "66 94 20 14", fonction: "Directeur Technique - Associé" },
+        { interphone: "401", pseudo: "-", nom: "Archives", email: "-", telephone: "-", fonction: "-" },
+        { interphone: "402", pseudo: "-", nom: "Secrétariat MOM", email: "-", telephone: "-", fonction: "-" },
+        { interphone: "404", pseudo: "MOM", nom: "Moussa MARA", email: "mara@diarrasec.com", telephone: "66 75 51 77", fonction: "Associé" },
+        { interphone: "410", pseudo: "-", nom: "Ancienne salle des assistants", email: "-", telephone: "-", fonction: "-" },
+        { interphone: "411 / 412", pseudo: "SCI", nom: "Sanounou CISSE", email: "scisse@sitaninfo", telephone: "76 47 68 67", fonction: "Maintenance Informatique - SITAN" },
+        { interphone: "Direction", pseudo: "-", nom: "-", email: "-", telephone: "-", fonction: "directionbko@diarrasec.com" },
+        { interphone: "Equipe Technique", pseudo: "-", nom: "-", email: "-", telephone: "-", fonction: "auditbko@diarrasec.com" },
+        { interphone: "Equipe Administration", pseudo: "-", nom: "-", email: "-", telephone: "-", fonction: "admin@diarrasec.com" },
+        { interphone: "Finances", pseudo: "-", nom: "-", email: "-", telephone: "-", fonction: "financesbko@diarrasec.com" },
+        { interphone: "Sitan Info", pseudo: "-", nom: "-", email: "-", telephone: "-", fonction: "groupesitan@sitaninfo.com" },
+        { interphone: "Tout le personnel", pseudo: "-", nom: "-", email: "-", telephone: "-", fonction: "infobko@diarrasec.com" },
+        { interphone: "PERSONNEL D'APPUI", pseudo: "-", nom: "Yoro FANE", email: "Chauffeur", telephone: "66 00 44 99", fonction: "-" },
+        { interphone: "-", pseudo: "-", nom: "THOMAS", email: "Gardien", telephone: "72 79 74 87", fonction: "-" },
+        { interphone: "-", pseudo: "-", nom: "BENGHALY CISSE DIT HADJI", email: "Coursier", telephone: "94 23 31 45", fonction: "-" },
+        { interphone: "-", pseudo: "-", nom: "Amadou KEITA DIT BOUBA", email: "Coursier", telephone: "60 54 54 04", fonction: "-" },
+        { interphone: "-", pseudo: "-", nom: "Jean BERNARD SIDIBE", email: "Chauffeur", telephone: "76 03 19 59", fonction: "-" },
+        { interphone: "-", pseudo: "-", nom: "Souleymane THIERO", email: "Chauffeur", telephone: "77 80 65 32", fonction: "-" },
+        { interphone: "-", pseudo: "-", nom: "ELISEE", email: "Gardien", telephone: "77 85 54 15", fonction: "-" }
+    ];
+
+    // Afficher les données dans le tableau
+    function renderTable(data) {
+        const tbody = document.getElementById('tableBody');
+        tbody.innerHTML = '';
+
+        data.forEach((employee, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${employee.interphone}</td>
+                <td>${employee.pseudo}</td>
+                <td>${employee.nom}</td>
+                <td>${employee.email}</td>
+                <td>${employee.telephone}</td>
+                <td>${employee.fonction}</td>
+                <td><button class="edit-btn" onclick="openEditModal(${index})">Modifier</button></td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    // Recherche
+    const searchInput = document.getElementById('searchInput');
+    const clearSearch = document.getElementById('clearSearch');
+
+    function filterTable() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filtered = employees.filter(emp => {
+            return emp.interphone.toLowerCase().includes(searchTerm) ||
+                   emp.pseudo.toLowerCase().includes(searchTerm) ||
+                   emp.nom.toLowerCase().includes(searchTerm) ||
+                   emp.email.toLowerCase().includes(searchTerm) ||
+                   emp.telephone.toLowerCase().includes(searchTerm) ||
+                   emp.fonction.toLowerCase().includes(searchTerm);
+        });
+        renderTable(filtered);
+    }
+
+    searchInput.addEventListener('input', filterTable);
+
+    clearSearch.addEventListener('click', function() {
+        searchInput.value = '';
+        renderTable(employees);
+    });
+
+    // Modal d'édition
+    const modal = document.getElementById('editModal');
+    const editForm = document.getElementById('editForm');
+    const cancelEdit = document.getElementById('cancelEdit');
+
+    function openEditModal(index) {
+        const employee = employees[index];
+        document.getElementById('editIndex').value = index;
+        document.getElementById('editInterphone').value = employee.interphone;
+        document.getElementById('editPseudo').value = employee.pseudo;
+        document.getElementById('editNom').value = employee.nom;
+        document.getElementById('editEmail').value = employee.email;
+        document.getElementById('editTelephone').value = employee.telephone;
+        document.getElementById('editFonction').value = employee.fonction;
+        modal.style.display = 'block';
+    }
+
+    cancelEdit.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    editForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const index = document.getElementById('editIndex').value;
+        employees[index] = {
+            interphone: document.getElementById('editInterphone').value,
+            pseudo: document.getElementById('editPseudo').value,
+            nom: document.getElementById('editNom').value,
+            email: document.getElementById('editEmail').value,
+            telephone: document.getElementById('editTelephone').value,
+            fonction: document.getElementById('editFonction').value
+        };
+        modal.style.display = 'none';
+        filterTable();
+    });
+
+    // Fermer la modal si on clique en dehors
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Initialisation
+    renderTable(employees);
+</script>
+
 </body>
 </html>

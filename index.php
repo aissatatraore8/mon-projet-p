@@ -131,23 +131,7 @@ $hosts=$hosts.'apps.sitaninfo.com:443';
 <section class="section section--center ng-scope">
 <div class="full-width">
 <!-- ngRepeat: user in config.list --><div class="ng-scope">
-<div class="block-user">
-<div class="block-user__avatar link">
-<div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/logo_archiva.png" alt="Système d'archivage électronique" src="portail/logo_archiva.png"><!-- end ngIf: !user.avatar -->
-<!-- ngIf: user.avatar -->
-</div>
-</div>
 
-
-<a href="http://sec:8080/archiva%2Dsae/" target="_blank">
-<div class="block-user__display link">
-<span class="block-user__name ng-binding">ARCHIVA-SAE</span>
-<span class="block-user__login ng-binding">L'archive vivant de vos documents, textes ou images</span>
-</div>
-</a>
-
-</div>
 
 <div class="block-user">
 <div class="block-user__avatar link">
@@ -180,21 +164,23 @@ $hosts=$hosts.'apps.sitaninfo.com:443';
 </a>
 
 </div>
+
 <div class="block-user">
 <div class="block-user__avatar link">
 <div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/larissa.png" alt="Gestion des dossiers d'appels d'offres" src="portail/larissa.png"><!-- end ngIf: !user.avatar -->
+<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/logo_cantine.png" alt="Gestion de la cantine" src="portail/logo_cantine.png"><!-- end ngIf: !user.avatar -->
 <!-- ngIf: user.avatar -->
 </div>
 </div>
-<a href="<?php echo $host?>/GesDao/" target="_blank">
+<a href="http://192.168.1.132:3000" target="_blank">
 <div class="block-user__display link">
-<span class="block-user__name ng-binding">GesDAO</span>
-<span class="block-user__login ng-binding">Solution simple de gestion et de suivi des soumissions</span>
+<span class="block-user__name ng-binding">Cantine SEC</span>
+<span class="block-user__login ng-binding">Solution simple de gestion de la cantine et suivi des paiements</span>
 </div>
 </a>
 
 </div>
+
 <div class="block-user">
 <div class="block-user__avatar link">
 <div class="block-user__circle">
@@ -225,22 +211,7 @@ $hosts=$hosts.'apps.sitaninfo.com:443';
 </a>
 
 </div>
-<div class="block-user">
-<div class="block-user__avatar link">
-<div class="block-user__circle">
-<!-- ngIf: !user.avatar --><img ng-if="!user.avatar" class="full-width ng-scope" ng-src="/assets/images/webstock.png" alt="Suivi et gestion des stocks" src="portail/webstock.png"><!-- end ngIf: !user.avatar -->
-<!-- ngIf: user.avatar -->
-</div>
-</div>
-<a href="<?php echo $host?>/wsm/" target="_blank">
-<div class="block-user__display link">
-<span class="block-user__name ng-binding">WebStock</span>
-<span class="block-user__login ng-binding">Solution de suivi et gestion des stocks</span>
-</div>
-</a>
 
-
-</div>
 </div><!-- end ngRepeat: user in config.list -->
 <div class="block-user">
 <div class="block-user__avatar link">
@@ -266,7 +237,7 @@ $hosts=$hosts.'apps.sitaninfo.com:443';
 <!-- ngIf: user.avatar -->
 </div>
 </div>
-<a href="http://192.168.1.53/annuaire/" target="_blank">
+<a href="http://localhost/sec-diarra/annuaire/" target="_blank">
 <div class="block-user__display link">
 <span class="block-user__name ng-binding">ANNUAIRE SEC</span>
 <span class="block-user__login ng-binding">Annuaire des collaborateurs</span>
