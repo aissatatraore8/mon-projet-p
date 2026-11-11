@@ -37,7 +37,7 @@
       <table>
         <colgroup>
           <col class="w-interphone"><col class="w-pseudo"><col class="w-nom">
-          <col class="w-email"><col class="w-tel"><col class="w-fonction"><col class="w-actions">
+          <col class="w-email"><col class="w-tel"><col class="w-fonction"><!-- <col class="w-actions"> -->
         </colgroup>
         <thead>
           <tr>
@@ -47,7 +47,7 @@
               <th>E-mail</th>
               <th>Téléphone</th>
               <th>Grade / Fonction</th>
-              <th>Actions</th>
+              <!-- <th>Actions</th> -->
           </tr>
         </thead>
         <tbody id="tableBody">
@@ -58,7 +58,7 @@
     </div>
   </div>
 
-<!-- Fenêtre modale d'édition -->
+<!-- Fenêtre modale d'édition - Commentée
 <div id="editModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="editTitle">
     <div class="modal-content">
         <h2 id="editTitle">Modifier les informations</h2>
@@ -97,6 +97,7 @@
         </form>
     </div>
 </div>
+-->
 
 <script>
     // Données des employés
@@ -204,7 +205,7 @@
                 row.appendChild(td);
             });
 
-            const actions = document.createElement('td');
+            /* const actions = document.createElement('td');
             actions.className = 'col-actions';
             const btn = document.createElement('button');
             btn.type = 'button';
@@ -213,7 +214,7 @@
             btn.dataset.id = employee.id;
             btn.textContent = 'Modifier';
             actions.appendChild(btn);
-            row.appendChild(actions);
+            row.appendChild(actions); */
 
             tbody.appendChild(row);
         });
@@ -248,7 +249,7 @@
         filterTable();
     });
 
-    // Modal d'édition
+    /* // Modal d'édition - Commenté
     const modal = document.getElementById('editModal');
     const editForm = document.getElementById('editForm');
     const cancelEdit = document.getElementById('cancelEdit');
@@ -306,7 +307,7 @@
 
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-    });
+    }); */
 
     // Initialisation
     renderTable(employees);
